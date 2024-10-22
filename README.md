@@ -1,8 +1,11 @@
-# 🤖 ADB & Fastboot Installer++
+# 🤖 ADB & Fastboot Installer++ v2.0.0
 
 ---
+#### Informations
+Tired of another situation where the installer URL doesn't work, the hosting has stopped working, or simply the file expired - and to find the right one, you have to dig through a ton of malware and viruses. I decided to provide an open-source, very simple version of the system-wide `Android ADB and Fastboot Installer++ v2.0.0`.
 
-Tired of another situation where the installer URL doesn't work, the hosting has stopped working, or simply the file expired - and to find the right one, you have to dig through a ton of malware and viruses. I decided to provide an open-source, very simple version of the system-wide `Android ADB and Fastboot Installer++`.
+#### Updated API and Drivers
+**Android ADB and Fastboot Installer++ v2.0.0**: is the only installer with updated the installer files to the **latest Android SDK/NDK** and **Android API 33 / R13**.
 
 ---
 
@@ -65,9 +68,9 @@ When setting up Linux on your Android device, you have several options to choose
 | 🐥 Small Size | 📁 9MB                             |
 | 🐅 Super Fast | ⏳15 Secound Install               |
 | 🐉 All-in-One | 📦 ADB + Fastboot + Drivers        |
-| 🐈 Easy       | 🌟 Run and install                 |
-| 🪼 Open Source | ✅ Malware free + easy download    |
-| 🐳 Clean      | 💧 ADB and Drivers from Google SDK |
+| 🐈 Easy       | 1️⃣ Run and install                 |
+| 🪼 Open Source | ✅ Latest SDK, NDK and Drivers     |
+| 🐳 Clean      | 🔻 ADB and Drivers from Google SDK |
 
 ---
 
@@ -75,12 +78,9 @@ When setting up Linux on your Android device, you have several options to choose
 
 Author of original `15 seconds ADB Installer` script is famous `Snoop05`, who deserves all the thanks.
 
-Author of this repo is `ovsky` (me 😉) known profesionally as `Przemysław Orłowski`, owner of this GitHub account and [orlowski.work](http://orlowski.work/ "orlowski.work") portfolio site (check it!).
+Author of this repo is `ovsky` known profesionally also as Przemysław Orłowski, owner of this GitHub Account and `orlowski.works` portfolio site (check it!).
+I have updated the installer files to the latest Android SDK/NDK and Android API 33 / R13. 
 
 #
 
-Greetings!
-
-
 ---
-
