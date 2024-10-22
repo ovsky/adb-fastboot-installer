@@ -65,9 +65,9 @@ When setting up Linux on your Android device, you have several options to choose
 | 🐥 Small Size | 📁 9MB                             |
 | 🐅 Super Fast | ⏳15 Secound Install               |
 | 🐉 All-in-One | 📦 ADB + Fastboot + Drivers        |
-| 🐈 Easy       | 1️⃣ Run and install                 |
+| 🐈 Easy       | 🌟 Run and install                 |
 | 🪼 Open Source | ✅ Malware free + easy download    |
-| 🐳 Clean      | 🔻 ADB and Drivers from Google SDK |
+| 🐳 Clean      | 💧 ADB and Drivers from Google SDK |
 
 ---
 
@@ -75,8 +75,12 @@ When setting up Linux on your Android device, you have several options to choose
 
 Author of original `15 seconds ADB Installer` script is famous `Snoop05`, who deserves all the thanks.
 
-Author of this repo is `ovsky` known profesionally also as Przemysław Orłowski, owner of this GitHub Account and `orlowski.works` portfolio site (check it!).
+Author of this repo is `ovsky` (me 😉) known profesionally as `Przemysław Orłowski`, owner of this GitHub account and [orlowski.work](http://orlowski.work/ "orlowski.work") portfolio site (check it!).
 
 #
 
+Greetings!
+
+
 ---
+
