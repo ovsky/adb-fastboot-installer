@@ -26,7 +26,7 @@ Tired of another situation where the installer URL doesn't work, the hosting has
 ##### Install ways:
 
 You can install using the repository source or download the latest pre-built release from:
-https://github.com/ovsky/adb/releases
+https://github.com/ovsky/adb-fastboot-installer/releases
 
 ###### Source:
 
