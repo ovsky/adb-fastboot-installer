@@ -1,14 +1,14 @@
 @ECHO off
 CLS
-TITLE 15 seconds ADB Installer v1.4.5
+TITLE 15 seconds ADB Installer v2.0.0
 COLOR 17
 ECHO ###############################################################################
 ECHO #                                                                             #
 ECHO #                          15 seconds ADB Installer                           #
 ECHO #                                                                             #
-ECHO #                                version 1.4.5                                #
+ECHO #                                version 2.0.0                                #
 ECHO #                                                                             #
-ECHO #                       by Snoop05 - Snoop05B@gmail.com                       #
+ECHO #                           by Snoop05 and ovvsky                             #
 ECHO #                                                                             #
 ECHO #                  Android Debug Bridge version 1.0.32 (MM)                   #
 ECHO #                  Google USB Driver version 11.0.0000.00000                  #
