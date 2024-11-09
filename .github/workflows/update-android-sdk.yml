@@ -14,16 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Checkout repository base
+
+      - name: Checkout Base Repository
         id: initialize_repository
         run: |
           git clone https://github.com/ovsky/adb-fastboot-installer.git      
 
-      - name: Download SDK .zip file
+      - name: Download latest SDK .zip file
         id: manage_sdk_files
         run: wget -O sdk.zip ${{ secrets.ANDROID_SDK_URL }}
         
-      - name: Unpack .ZIP files
+      - name: Unpack .ZIP file
         run: |
           chmod 777 adb-fastboot-installer
           rm -rf adb-fastboot-installer/.git
@@ -31,7 +32,7 @@ jobs:
           unzip -o sdk.zip -d ./adb-fastboot-installer/adb
           rm sdk.zip 
 
-      - name: Detect latest available SDK_ID 
+      - name: Analyze latest SDK versions
         id: fetch_sdk_id
         run: |
           response=$(curl -s ${{ secrets.SDK_CHECKER }})
@@ -42,15 +43,16 @@ jobs:
           echo "BRANCH_ID=$branch_id" >> $GITHUB_ENV
           echo "$sdk_id" > ./adb-fastboot-installer/SDK-VERSION.txt
 
-      - name: Display SDK_ID
+      - name: Display SDK_ID and BRANCH_ID
         run: |
-          echo "The current SDK_ID is: $SDK_ID"
+          echo "Current SDK_ID is: $SDK_ID"
+          echo "Current API is: $BRANCH_ID"
 
-      - name: Deploy Android SDK Update
+      - name: Deploy Android SDK Update 
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: auto-update-(${{ env.BRANCH_ID }})
+          BRANCH: auto-update-${{ env.BRANCH_ID }}
           FOLDER: adb-fastboot-installer
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Update API: ${{ env.SDK_ID }} [{sha}]" 
