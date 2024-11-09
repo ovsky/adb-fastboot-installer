@@ -29,7 +29,8 @@ jobs:
           chmod 777 adb-fastboot-installer
           rm -rf adb-fastboot-installer/.git
           rm -rf adb-fastboot-installer/.github/workflows
-          unzip -o sdk.zip -d ./adb-fastboot-installer/adb
+          unzip -o sdk.zip -d ./adb-fastboot-installer/
+          mv  -v ./adb-fastboot-installer/platform-tools/* ./adb-fastboot-installer/adb
           rm sdk.zip 
 
       - name: Analyze latest SDK versions
