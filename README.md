@@ -1,4 +1,4 @@
-# 🤖 ADB & Fastboot Installer++ v2.9.5 [AFI++]
+# 🤖 ADB & Fastboot Installer++ v2.9.5 - [AFI++]
 
 ---
 
@@ -23,6 +23,14 @@ You can start the SDK Update Action by using built-in GitHub Action - **`Update 
 
 Use the predefined **GitHub Actons**, to simply update the SDK, publish branch or build the project!<br>
 Work has never been so easy!
+
+### 📓 Misc:
+#### **ADBO Functionality - added in v2.9.0:**
+[ADBO](https://github.com/ovsky/ADBO) is the *Meta Quest* fork of ADB which is way waster in many situations and uses file-streaming.
+You can use it along existing ADB by our implementation - simply using the `adbo` command instead of `adb` to acess some of the features.
+
+#### **Server Ready - Silent Install - added in 2.8.0:**
+**AFI++** has built-indetection of any kayboard interactions. Thanks to this, our tool is fully server-ready and can be provided in configuration backages - beacause, when needed, it can install itself completely automatically without any outside decisions needed.
 
 ---
 
@@ -93,10 +101,6 @@ When setting up Linux on your Android device, you have several options to choose
 | 🐈 Easy       | 📖 One-click-run                   |
 | 🪼 Open Source | ✅ Latest SDK, NDK and Drivers     |
 | 🐳 Clean      | 🔻 ADB and Drivers from Google SDK |
-
-#### **Added ADBO installing ability - in v2.9.5:**
-[ADBO](https://github.com/ovsky/ADBO) is the Meta Quest fork of ADB which is way waster in many situations and uses file-streaming.
-You can use it along existing ADB, using the `adbo` command instead of `adb` to acess extended features.
 
 ---
 
