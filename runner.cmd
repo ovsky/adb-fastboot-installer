@@ -44,9 +44,12 @@ TITLE Automatic ADB Installer v2.8.5
     
     echo RESULT:
     copy %~dp0\adb.cmd %WINDIR%\System32\adb.cmd
+    copy %~dp0\adbo.cmd %WINDIR%\System32\adbo.cmd
     copy %~dp0\fastboot.cmd %WINDIR%\System32\fastboot.cmd
     XCOPY %~dp0\adb %WINDIR%\adb /y /q 1>nul 2>>%USERPROFILE%\adb-installer.log
+    XCOPY %~dp0\adbo %WINDIR%\adbo /y /q 1>nul 2>>%USERPROFILE%\adb-installer.log
     echo         ADB folder with file(s) [15] copied.
+    echo         ADBO folder with file(s) [6] copied.
     echo         ADB files initialized!
     PING localhost -n 2 >NUL
     echo -------------------
