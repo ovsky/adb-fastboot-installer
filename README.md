@@ -1,4 +1,4 @@
-# 🤖 ADB & Fastboot Installer++ v2.8.5 [AFI++]
+# 🤖 ADB & Fastboot Installer++ v2.9.0 [AFI++]
 
 ---
 
@@ -15,7 +15,7 @@ _Simply the best, always up-to-date, totally reliable, open-source, and easy to 
 
 ### 📕 Updated API and Drivers:
 
-**Android ADB and Fastboot Installer++ v2.8.5**<br>
+**Android ADB and Fastboot Installer++ v2.9.0**<br>
 This is probaly the only installer with updated ADB libraries to the **latest Android SDK/NDK** and **Android API 35 / R15**.<br>
 You can start the SDK Update Action by using built-in GitHub Action - **`Update Android SDK`** and the repository will do the rest!
 
