@@ -1,4 +1,4 @@
-# 🤖 ADB & Fastboot Installer++ v2.9.0 [AFI++]
+# 🤖 ADB & Fastboot Installer++ v2.9.5 [AFI++]
 
 ---
 
@@ -15,7 +15,7 @@ _Simply the best, always up-to-date, totally reliable, open-source, and easy to 
 
 ### 📕 Updated API and Drivers:
 
-**Android ADB and Fastboot Installer++ v2.9.0**<br>
+**Android ADB and Fastboot Installer++ v2.9.5**<br>
 This is probaly the only installer with updated ADB libraries to the **latest Android SDK/NDK** and **Android API 35 / R15**.<br>
 You can start the SDK Update Action by using built-in GitHub Action - **`Update Android SDK`** and the repository will do the rest!
 
@@ -93,6 +93,10 @@ When setting up Linux on your Android device, you have several options to choose
 | 🐈 Easy       | 📖 One-click-run                   |
 | 🪼 Open Source | ✅ Latest SDK, NDK and Drivers     |
 | 🐳 Clean      | 🔻 ADB and Drivers from Google SDK |
+
+#### **Added ADBO installing ability - in v2.9.5:**
+[ADBO](https://github.com/ovsky/ADBO) is the Meta Quest fork of ADB which is way waster in many situations and uses file-streaming.
+You can use it along existing ADB, using the `adbo` command instead of `adb` to acess extended features.
 
 ---
 
