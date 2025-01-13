@@ -1,4 +1,8 @@
-# 🤖 ADB & Fastboot Installer++ v2.9.5 - [AFI++]
+# 🤖 ADB & Fastboot Installer++ v2.9.5 – [AFI++]
+
+---
+
+💚 **ADB & Fastboot Installer++ v2.9.5 - [AFI++]** – is always up-to-date, self-updating [self-building], *ADB & Fastboot* toolset, with security in-mind and many features awaited for years. Have fun! 😺
 
 ---
 
