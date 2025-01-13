@@ -2,16 +2,11 @@
 
 ---
 
-### 📒 Informations:
+### 📙 Informations:
 
 Auto ADB Installer (ADB & Fastboot Installer) [AFI++] is the first ever self-updating debugging tool that automatically fetches latest libraries, drivers and executables - with every new API release, keeping it always up to date with latest Android, ADB & Fastboot features!
 
 Additionally, with this open-source, self-maintaining repository you always have a reliable ADB installer source, without having to search for links to hosts that are down or files that have expired, among tons of a malware and viruses.
-
-### 📗 Idea:
-
-The idea behind the **AFI++** is:<br>
-_Simply the best, always up-to-date, totally reliable, open-source, and easy to use version of the system-wide `ADB and Fastboot`._
 
 ### 📕 Updated API and Drivers:
 
@@ -19,17 +14,27 @@ _Simply the best, always up-to-date, totally reliable, open-source, and easy to 
 This is probaly the only installer with updated ADB libraries to the **latest Android SDK/NDK** and **Android API 35 / R15**.<br>
 You can start the SDK Update Action by using built-in GitHub Action - **`Update Android SDK`** and the repository will do the rest!
 
-### ✨ Automated Workflow:
+### 📒 Automated Workflow:
 
 Use the predefined **GitHub Actons**, to simply update the SDK, publish branch or build the project!<br>
 Work has never been so easy!
 
-### 📓 Misc:
-#### **ADBO Functionality - added in v2.9.0:**
+##### Latest SDK Update Status: 
+
+[![Update SDK](https://github.com/ovsky/adb-fastboot-installer/actions/workflows/update-android-sdk.yml/badge.svg)](https://github.com/ovsky/adb-fastboot-installer/actions)
+
+### 📗 Idea:
+
+The idea behind the **AFI++** is:<br>
+_Simply the best, always up-to-date, totally reliable, open-source, and easy to use version of the system-wide `ADB and Fastboot`._
+
+
+### 📚 Misc:
+##### **ADBO Functionality - added in v2.9.0:**
 [ADBO](https://github.com/ovsky/ADBO) is the *Meta Quest* fork of ADB which is way waster in many situations and uses file-streaming.
 You can use it along existing ADB by our implementation - simply using the `adbo` command instead of `adb` to acess some of the features.
 
-#### **Server Ready - Silent Install - added in 2.8.0:**
+##### **Server Ready - Silent Install - added in 2.8.0:**
 **AFI++** has built-indetection of any kayboard interactions. Thanks to this, our tool is fully server-ready and can be provided in configuration backages - beacause, when needed, it can install itself completely automatically without any outside decisions needed.
 
 ---
