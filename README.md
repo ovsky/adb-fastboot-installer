@@ -1,21 +1,26 @@
-# 🤖 ADB & Fastboot Installer++ v2.5.0
+# 🤖 ADB & Fastboot Installer++ v2.8.5 [AFI++]
 
 ---
+
 ### 📒 Informations:
-Auto ADB Installer (ADB & Fastboot Installer) is the first ever self-updating debugging tool that automatically fetches latest libraries, drivers and execcutables - with every new API release, keeping it always up to date with latest Android, ADB & Fastboot features!
+
+Auto ADB Installer (ADB & Fastboot Installer) [AFI++] is the first ever self-updating debugging tool that automatically fetches latest libraries, drivers and executables - with every new API release, keeping it always up to date with latest Android, ADB & Fastboot features!
 
 Additionally, with this open-source, self-maintaining repository you always have a reliable ADB installer source, without having to search for links to hosts that are down or files that have expired, among tons of a malware and viruses.
 
 ### 📗 Idea:
+
 The idea behind the **AFI++** is:<br>
-*Simply the best, always up-to-date, totally reliable, open-source, and easy to use version of the system-wide `ADB and Fastboot`.*
+_Simply the best, always up-to-date, totally reliable, open-source, and easy to use version of the system-wide `ADB and Fastboot`._
 
 ### 📕 Updated API and Drivers:
-**Android ADB and Fastboot Installer++ v2.0.0**<br>
+
+**Android ADB and Fastboot Installer++ v2.8.5**<br>
 This is probaly the only installer with updated ADB libraries to the **latest Android SDK/NDK** and **Android API 35 / R15**.<br>
 You can start the SDK Update Action by using built-in GitHub Action - **`Update Android SDK`** and the repository will do the rest!
 
 ### ✨ Automated Workflow:
+
 Use the predefined **GitHub Actons**, to simply update the SDK, publish branch or build the project!<br>
 Work has never been so easy!
 
@@ -50,9 +55,14 @@ https://github.com/ovsky/adb-fastboot-installer/releases
 ###### Pre-build:
 
 1. Download and unpack latest release, then open the unpacked directory.
-2. Run `adb-install.exe` (as administrator).
+2. Run `adb-installer++.exe`.
 3. During the installation process, type [Y/N] [Yes/No] to specify your installation preferences.
 4. Everything is ready!
+
+###### Arguments:
+
+1. Use the `--silent` argument if you want to perform a fully automatic, silent installation.
+2. Use the `--silent-no-driver` if you want to perform a fully automatic, silent installation without the ADB driver.
 
 ###### Check:
 
@@ -80,7 +90,7 @@ When setting up Linux on your Android device, you have several options to choose
 | 🐥 Small Size | 📁 9MB                             |
 | 🐅 Super Fast | ⏳15 Secound Install               |
 | 🐉 All-in-One | 📦 ADB + Fastboot + Drivers        |
-| 🐈 Easy       | 📖 One-click-run              |
+| 🐈 Easy       | 📖 One-click-run                   |
 | 🪼 Open Source | ✅ Latest SDK, NDK and Drivers     |
 | 🐳 Clean      | 🔻 ADB and Drivers from Google SDK |
 
@@ -88,10 +98,10 @@ When setting up Linux on your Android device, you have several options to choose
 
 # [🐧 ️3. Author](#author)
 
-This repository is inspired and based on the original `15 seconds ADB Installer` script from famous `Snoop05`, who deserves many thanks!
+This repository is inspired on the original `15 seconds ADB Installer` script from famous `Snoop05`, who deserves many thanks!
 
-Author of this repo, actions, workflow and updates is `ovsky`, known profesionally as Przemysław Orłowski - owner of this GitHub Account and `orlowski.works` portfolio site (check it!).
-I have updated the installer files to the latest Android SDK/NDK and Android API 35 / R15. 
+Author of this repo, actions, workflow, installer and updates is `ovsky`, known profesionally as Przemysław Orłowski - owner of this GitHub Account and [`orlowski.works`](http://orlowski.works/) portfolio site (check it!).
+I have updated the installer files to the latest Android SDK/NDK and Android API 35 / R15.
 
 #
 
