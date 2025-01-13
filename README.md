@@ -30,12 +30,15 @@ _Simply the best, always up-to-date, totally reliable, open-source, and easy to 
 
 
 ### 📚 Misc:
-##### **ADBO Functionality - added in v2.9.0:**
+##### **- ADBO Functionality - added in v2.9.0:**
 [ADBO](https://github.com/ovsky/ADBO) is the *Meta Quest* fork of ADB which is way waster in many situations and uses file-streaming.
 You can use it along existing ADB by our implementation - simply using the `adbo` command instead of `adb` to acess some of the features.
 
-##### **Server Ready - Silent Install - added in 2.8.0:**
+##### **- Server Ready - Silent Install - added in 2.8.0:**
 **AFI++** has built-indetection of any kayboard interactions. Thanks to this, our tool is fully server-ready and can be provided in configuration backages - beacause, when needed, it can install itself completely automatically without any outside decisions needed.
+
+##### **- Fully Secure - Encryption - added in 1.4.7:**
+We are using encryption in every stage of feching the NDK/SDK sources. All connections are based on the GitHub Secrets, so there is no possibility that some of sources or targets will be hacked or above all replaced by a hacker, to push some potential malware. So, it makes AFI++ complete secure solution! 
 
 ---
 
