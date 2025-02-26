@@ -36,6 +36,8 @@ jobs:
       - name: Analyze latest SDK versions
         id: fetch_sdk_id
         run: |
+          echo ${{ secrets.SDK_CHECKER }}
+          echo ${{ secrets.ANDROID_SDK_BRANCH }}
           response=$(curl -s ${{ secrets.SDK_CHECKER }})
           short=$(curl -s ${{ secrets.ANDROID_SDK_BRANCH }})
           sdk_id=$(echo $response)
