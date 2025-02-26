@@ -39,6 +39,7 @@ jobs:
         run: |
           branch_names=$(git branch --remote | grep origin/ | grep -v HEAD | sed 's/origin\///')
           echo "BRANCH_NAMES=$branch_names" >> "$GITHUB_OUTPUT"
+          echo $branch_names
 
       - name: Parse branch names and find highest number
         id: parse_branches
