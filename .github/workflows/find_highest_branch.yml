@@ -14,11 +14,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Needed to get all branches
-          ref: ${{ github.ref }} # Crucial addition
+          fetch-depth: 0
+          ref: ${{ github.ref }}
 
       - name: Fetch all remote branches
         run: git fetch --all
+
+      - name: Debug: List remote branches
+        run: git remote show origin
+
+      - name: Debug: Raw branch list before local creation
+        run: git branch
+
+      - name: Create local tracking branches
+        run: |
+          for remote in $(git branch -r); do
+            branch=$(echo "$remote" | sed 's/origin\///');
+            git branch --track "$branch" "$remote";
+          done
+
+      - name: Debug: Raw branch list after local creation
+        run: git branch
 
       - name: Get all branch names
         id: get_branches
