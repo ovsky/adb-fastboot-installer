@@ -16,17 +16,21 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           command-line-tools: "latest"
-      - name: Get SDK Identidier
+      - name: Get SDK ID
         id: get_sdk_id
         run: |
-          sdk_name=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "platform;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}' )
           sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "sources;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}' )
           short_sdk_id="${sdk_id:0:2}"
           echo "SHORT_SDK_ID=$short_sdk_id" >> $GITHUB_OUTPUT          
+          echo "SDK_ID=$sdk_id" >> $GITHUB_OUTPUT          
+      - name: Get SDK Name
+        id: get_sdk_name
+        run: |
+          sdk_name=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "platforms;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}' )
           echo "sdk_name=$sdk_name" >> $GITHUB_OUTPUT
       - name: Display latest API level
         id: display_api
         run: | 
           echo "Latest Android SDK ID:"
           echo "${{ steps.get_sdk_id.outputs.short_sdk_id }}"
-          echo "${{ steps.get_sdk_id.outputs.sdk_name }}"
+          echo "${{ steps.get_sdk_name.outputs.sdk_name }}"
