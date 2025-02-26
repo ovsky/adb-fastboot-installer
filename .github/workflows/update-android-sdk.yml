@@ -26,7 +26,7 @@ jobs:
         
       - name: Unpack .ZIP file
         run: |
-          echo curl -s https://developer.android.com/studio#command-tools | grep -oE 'https://dl.google.com/android/repository/commandlinetools-linux-[0-9]+_latest.zip' | head -n 1 | xargs curl -O
+          curl -s https://developer.android.com/studio#command-tools | grep -oE 'https://dl.google.com/android/repository/commandlinetools-linux-[0-9]+_latest.zip' | head -n 1 | xargs curl -O
           chmod 777 adb-fastboot-installer
           rm -rf adb-fastboot-installer/.git
           rm -rf adb-fastboot-installer/.github/workflows
