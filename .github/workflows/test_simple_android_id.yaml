@@ -7,52 +7,22 @@ on:
       - main
 
 jobs:
-  fetch-latest-ndk-sdk:
+  get_sdk_info:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: Set up Android SDK tools
+        uses: android-actions/setup-android@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Install Android SDK Command-line Tools
+          command-line-tools: "latest"
+      - name: Scrape SDK ID  # Step with the correct ID
+        id: scrape_sdk
         run: |
-          export ANDROID_HOME=$HOME/android-sdk
-          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-          export PATH=$ANDROID_HOME/platform-tools:$PATH
-          mkdir -p $ANDROID_HOME/cmdline-tools
-          cd $ANDROID_HOME/cmdline-tools
-          curl -o commandlinetools.zip https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip
-          unzip commandlinetools.zip
-          rm commandlinetools.zip
-          mv cmdline-tools latest
-          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
-          echo "PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH" >> $GITHUB_ENV
-          echo "PATH=$ANDROID_HOME/platform-tools:$PATH" >> $GITHUB_ENV
-
-      - name: Accept Licenses
-        run: |
-          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-          yes | sdkmanager --licenses || true
-
-      - name: Get Latest Android SDK ID
-        run: |
-          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-          sdkmanager --list | grep "platforms;android-" | awk '{print $1}' | sort -V | tail -n 1 | tee latest_sdk_id.txt
-
-      - name: Get Latest Android NDK ID
-        run: |
-          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-          sdkmanager --list | grep "ndk;" | awk '{print $1}' | sort -V | tail -n 1 | tee latest_ndk_id.txt
-
-      - name: Upload SDK and NDK IDs as Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: latest-android-ids
-          path: |
-            latest_sdk_id.txt
-            latest_ndk_id.txt
+          sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "platforms;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}')
+          echo "sdk_id=$sdk_id" >> $GITHUB_OUTPUT  # Setting the output correctly
+      - name: Display latest API level
+        id: asd_asd_asd
+        run: | 
+          echo "Latest Android SDK ID:"
+          echo "${{ steps.scrape_sdk.outputs.sdk_id }}"
