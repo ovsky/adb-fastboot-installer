@@ -1,0 +1,53 @@
+name: Build and Release Executables
+on:
+  push:
+    branches:
+      - main  # Or your main branch name
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  build:
+    runs-on: windows-latest  # Build on Windows
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # Choose a Python version compatible with your scripts
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+
+      - name: Compile with PyInstaller
+        run: |
+          pyinstaller --onefile --name ${{ env.EXE_NAME }} ${{ env.FOLDER_TO_COMPILE }}/${{ env.PYTHON_SCRIPT_NAME }}
+          # --onefile: Creates a single executable
+          # --name: Sets the output executable name
+          # Replace <folder_to_compile> with your folder's name
+          # Replace <python_script_name> with your main Python script's name
+        env:
+          FOLDER_TO_COMPILE: adb-fastboot-installer  # Replace with the folder to compile
+          PYTHON_SCRIPT_NAME: adb_fastboot_installer.py # Replace with your main Python file name 
+          EXE_NAME: adb-fastboot-installer # Replace with desired name of executable
+
+      - name: Copy Batch Script
+        run: |
+          copy ${{ env.BATCH_SCRIPT_NAME }} dist\${{ env.BATCH_SCRIPT_NAME }}
+        env:
+          BATCH_SCRIPT_NAME: adb-fastboot-installer.bat  # Replace with your .bat file name
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/') # Only create release for tags
+        with:
+          files: |
+            dist/${{ env.EXE_NAME }}.exe
+            dist/${{ env.BATCH_SCRIPT_NAME }}
+          name: Release ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
