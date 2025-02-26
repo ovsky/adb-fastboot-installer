@@ -3,8 +3,8 @@ name: Find Highest Branch Number
 on:
   push:
     branches:
-      - main # Or whatever your default branch is
-  workflow_dispatch: # Allow manual triggering
+      - main
+  workflow_dispatch:
 
 jobs:
   find_highest_branch_number:
@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Needed to get all branches
+          ref: ${{ github.ref }} # Crucial addition
 
       - name: Fetch all remote branches
         run: git fetch --all
@@ -33,7 +34,7 @@ jobs:
 
           if [[ -n "$branch_names" ]]; then
             for branch in $branch_names; do
-              number=$(echo "$branch" | grep -o '[0-9]\+$') #Extracts the number at end of branch name.
+              number=$(echo "$branch" | grep -o '[0-9]\+$')
               if [[ -n "$number" ]]; then
                 if [[ "$number" -gt "$highest_number" ]]; then
                   highest_number="$number"
