@@ -16,10 +16,13 @@ jobs:
         with:
           fetch-depth: 0 # Needed to get all branches
 
+      - name: Fetch all remote branches
+        run: git fetch --all
+
       - name: Get all branch names
         id: get_branches
         run: |
-          branch_names=$(git branch | grep -v HEAD | sed 's/\* //') # Get local branches
+          branch_names=$(git branch | grep -v HEAD | sed 's/\* //')
           echo "BRANCH_NAMES=$branch_names" >> "$GITHUB_OUTPUT"
 
       - name: Parse branch names and find highest number
