@@ -1,52 +1,50 @@
-name: Get Latest Android SDK ID
+name: tEST Latest Android NDK and SDK ID
 
 on:
-  schedule:
-    - cron: '0 0 * * *' 
-  workflow_dispatch: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  get_sdk_id:
+  fetch-latest-ndk-sdk:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Android SDK tools
-        uses: android-actions/setup-android@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
-          command-line-tools: "latest"
+          distribution: 'temurin'
+          java-version: '17'
 
-      - name: Get latest platform API level
-        id: get_api_level
+      - name: Install Android SDK Command-line Tools
         run: |
-          latest_api_level=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "platforms;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}')
-          echo "latest_api_level=$latest_api_level" >> $GITHUB_OUTPUT
+          sudo mkdir -p /opt/android-sdk/cmdline-tools/latest
+          cd /opt/android-sdk/cmdline-tools/latest
+          curl -o sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip
+          unzip sdk-tools.zip
+          rm sdk-tools.zip
+          echo "export ANDROID_HOME=/opt/android-sdk" >> $GITHUB_ENV
+          echo "export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH" >> $GITHUB_ENV
+          echo "export PATH=$ANDROID_HOME/platform-tools:$PATH" >> $GITHUB_ENV
 
-      - name: Display latest API level
-        run: | 
-             echo "Latest Android API level:"
-             echo  ${{ steps.get_api_level.outputs.latest_api_level }}
+      - name: Accept Licenses
+        run: yes | sdkmanager --licenses
 
-      - name: Get Latest build tools version
-        id: get_build_tools
+      - name: Get Latest Android SDK ID
         run: |
-          latest_build_tools=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "build-tools;" | sort -r | head -n 1 | awk -F ';' '{print $2}')
-          echo "latest_build_tools=$latest_build_tools" >> $GITHUB_OUTPUT
+          sdkmanager --list | grep "platforms;android-" | awk '{print $1}' | sort -V | tail -n 1 | tee latest_sdk_id.txt
 
-      - name: Display latest build tools version
-        run: | 
-            echo "Latest Android build tools version: 
-            echo ${{ steps.get_build_tools.outputs.latest_build_tools }}"
-
-      - name: Get latest NDK version
-        id: get_ndk_tools
+      - name: Get Latest Android NDK ID
         run: |
-          latest_ndk=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "ndk;" | sort -r | head -n 1 | awk -F ';' '{print $2}')
-          echo "latest_ndk=$latest_ndk" >> $GITHUB_OUTPUT
+          sdkmanager --list | grep "ndk;" | awk '{print $1}' | sort -V | tail -n 1 | tee latest_ndk_id.txt
 
-      - name: Display latest NDK version
-        run: | 
-          echo "Latest Android NDK version:"
-          echo ${{ steps.get_ndk_tools.outputs.latest_ndk }}
+      - name: Upload SDK and NDK IDs as Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: latest-android-ids
+          path: |
+            latest_sdk_id.txt
+            latest_ndk_id.txt
