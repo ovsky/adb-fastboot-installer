@@ -1,29 +1,28 @@
-
 name: TEST Latest Android NDK and SDK ID
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  get_sdk_info:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Android SDK tools
-        uses: android-actions/setup-android@v3
-        with:
-          command-line-tools: "latest"
-      - name: Scrape SDK ID  # Step with the correct ID
-        id: scrape_sdk
-        run: |
-          sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "sources;android-" | sort -r | head -n 1 | awk -F '                                                              ' '{print $2}' | awk -F '-' '{print $2}')
-          echo "sdk_id=$sdk_id" >> $GITHUB_OUTPUT  # Setting the output correctly
-      - name: Display latest API level
-        id: asd_asd_asd
-        run: | 
-          echo "Latest Android SDK ID:"
-          echo "${{ steps.scrape_sdk.outputs.sdk_id }}"
+get_sdk_info:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up Android SDK tools
+      uses: android-actions/setup-android@v3
+      with:
+        command-line-tools: "latest"
+    - name: Scrape SDK ID  # Step with the correct ID
+      id: scrape_sdk
+      run: |
+        sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "sources;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}')
+        echo "sdk_id=$sdk_id" >> $GITHUB_OUTPUT  # Setting the output correctly
+    - name: Display latest API level
+      id: asd_asd_asd
+      run: | 
+        echo "Latest Android SDK ID:"
+        echo "${{ steps.scrape_sdk.outputs.sdk_id }}"
