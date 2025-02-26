@@ -1,4 +1,4 @@
-name: Debug Branch Fetch
+name: Find Highest Branch Number
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  debug_branches:
+  find_highest_branch_number:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,5 +20,31 @@ jobs:
       - name: Fetch all remote branches
         run: git fetch --all
 
-      - name: Debug List all branches
-        run: git branch -a
+      - name: Get all branch names (local)
+        id: get_branches
+        run: |
+          branch_names=$(git branch | grep -v HEAD | sed 's/\* //')
+          echo "BRANCH_NAMES=$branch_names" >> "$GITHUB_OUTPUT"
+
+      - name: Parse branch names and find highest number
+        id: parse_branches
+        run: |
+          branch_names="${{ steps.get_branches.outputs.BRANCH_NAMES }}"
+          highest_number=0
+
+          if [[ -n "$branch_names" ]]; then
+            for branch in $branch_names; do
+              number=$(echo "$branch" | grep -o '[0-9]\+$')
+              if [[ -n "$number" ]]; then
+                if [[ "$number" -gt "$highest_number" ]]; then
+                  highest_number="$number"
+                fi
+              fi
+            done
+          fi
+
+          echo "HIGHEST_NUMBER=$highest_number" >> "$GITHUB_OUTPUT"
+
+      - name: Echo highest number
+        run: |
+          echo "Highest branch number: ${{ steps.parse_branches.outputs.HIGHEST_NUMBER }}"
