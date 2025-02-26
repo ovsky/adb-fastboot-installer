@@ -1,0 +1,46 @@
+name: Find Highest Branch Number
+
+on:
+  push:
+    branches:
+      - main # Or whatever your default branch is
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  find_highest_branch_number:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed to get all branches
+
+      - name: Get all branch names
+        id: get_branches
+        run: |
+          branch_names=$(git branch | grep -v HEAD | sed 's/\* //') # Get local branches
+          echo "BRANCH_NAMES=$branch_names" >> "$GITHUB_OUTPUT"
+
+      - name: Parse branch names and find highest number
+        id: parse_branches
+        run: |
+          branch_names="${{ steps.get_branches.outputs.BRANCH_NAMES }}"
+          highest_number=0
+
+          if [[ -n "$branch_names" ]]; then
+            for branch in $branch_names; do
+              number=$(echo "$branch" | grep -o '[0-9]\+$') #Extracts the number at end of branch name.
+              if [[ -n "$number" ]]; then
+                if [[ "$number" -gt "$highest_number" ]]; then
+                  highest_number="$number"
+                fi
+              fi
+            done
+          fi
+
+          echo "HIGHEST_NUMBER=$highest_number" >> "$GITHUB_OUTPUT"
+
+      - name: Echo highest number
+        run: |
+          echo "Highest branch number: ${{ steps.parse_branches.outputs.HIGHEST_NUMBER }}"
