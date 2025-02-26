@@ -54,8 +54,10 @@ jobs:
 
       - name: Display SDK_ID and BRANCH_ID
         run: |
-          echo "Current SDK_ID is: $SDK_ID"
-          echo "Current API is: $BRANCH_ID"
+          echo "Current SDK_ID is:"
+          echo $SDK_ID
+          echo "Current API is:"
+          echo $BRANCH_ID
 
       - name: Deploy Android SDK Update 
         uses: s0/git-publish-subdir-action@develop
