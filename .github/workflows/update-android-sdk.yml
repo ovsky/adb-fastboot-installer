@@ -31,13 +31,18 @@ jobs:
           rm -rf adb-fastboot-installer/.github/workflows
           unzip -o sdk.zip -d ./adb-fastboot-installer/
           mv  -v ./adb-fastboot-installer/platform-tools/* ./adb-fastboot-installer/adb
-          rm sdk.zip 
+          rm sdk.zip
+
+      - name: Check Secrets
+        run: 'echo "$SSH_KEY" > key'
+        shell: bash
+        env:
+          SDK_CHECKER: ${{secrets.SDK_CHECKER}}
+          SDK_BRANCH: ${{secrets.ANDROID_SDK_BRANCH}}
 
       - name: Analyze latest SDK versions
         id: fetch_sdk_id
         run: |
-          echo ${{ secrets.SDK_CHECKER }}
-          echo ${{ secrets.ANDROID_SDK_BRANCH }}
           response=$(curl -s ${{ secrets.SDK_CHECKER }})
           short=$(curl -s ${{ secrets.ANDROID_SDK_BRANCH }})
           sdk_id=$(echo $response)
