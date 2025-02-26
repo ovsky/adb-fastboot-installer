@@ -1,3 +1,4 @@
+
 name: TEST Latest Android NDK and SDK ID
 
 on:
@@ -12,24 +13,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Android SDK tools  
+      - name: Set up Android SDK tools
         uses: android-actions/setup-android@v3
         with:
           command-line-tools: "latest"
       - name: Scrape SDK ID  # Step with the correct ID
         id: scrape_sdk
         run: |
-          sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "sources;android-" | awk -F '-' '{print $2}' | cut -c 1-2 )
+          sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "platforms;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}')
           echo "sdk_id=$sdk_id" >> $GITHUB_OUTPUT  # Setting the output correctly
-      - name: Substring Last Two Characters
-        run: |
-          ORIGINAL_STRING=$sdk_id
-          LENGTH="${#ORIGINAL_STRING}"
-          SUBSTRING="${ORIGINAL_STRING:$((LENGTH-2))}"
-          echo "Original string: $ORIGINAL_STRING"
-          echo "Substring: $SUBSTRING"
       - name: Display latest API level
         id: asd_asd_asd
-        run: |
+        run: | 
           echo "Latest Android SDK ID:"
           echo "${{ steps.scrape_sdk.outputs.sdk_id }}"
