@@ -20,10 +20,10 @@ jobs:
       - name: Fetch all remote branches
         run: git fetch --all
 
-      - name: Debug: List remote branches
+      - name: Debug List remote branches
         run: git remote show origin
 
-      - name: Debug: Raw branch list before local creation
+      - name: Debug Raw branch list before local creation
         run: git branch
 
       - name: Create local tracking branches
@@ -33,7 +33,7 @@ jobs:
             git branch --track "$branch" "$remote";
           done
 
-      - name: Debug: Raw branch list after local creation
+      - name: Debug Raw branch list after local creation
         run: git branch
 
       - name: Get all branch names
