@@ -26,7 +26,7 @@ jobs:
       - name: Get all branch names (local)
         id: get_branches
         run: |
-          branch_names=$(git branch -a | grep -v HEAD | sed 's/\* //')
+          branch_names=$(git branch -a | sed 's/\* //' | cut -d '/' -f 3-)
           echo "BRANCH_NAMES=$branch_names" >> "$GITHUB_OUTPUT"
 
       - name: Parse branch names and find highest number
