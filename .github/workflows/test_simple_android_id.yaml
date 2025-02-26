@@ -19,10 +19,13 @@ jobs:
       - name: Scrape SDK ID  # Step with the correct ID
         id: scrape_sdk
         run: |
-          sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "sources;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}')
-          echo "sdk_id=$sdk_id" >> $GITHUB_OUTPUT  # Setting the output correctly
+          sdk_id=$( $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep "sources;android-" | sort -r | head -n 1 | awk -F ';' '{print $2}' | awk -F '-' '{print $2}' )
+          short_sdk_id="${sdk_id:0:2}"
+          echo "SHORT_SDK_ID=$short_sdk_id" >> $GITHUB_OUTPUT          
+          echo "sdk_id=$sdk_id" >> $GITHUB_OUTPUT  
       - name: Display latest API level
         id: asd_asd_asd
         run: | 
           echo "Latest Android SDK ID:"
+          echo "${{ steps.scrape_sdk.outputs.short_sdk_id }}"
           echo "${{ steps.scrape_sdk.outputs.sdk_id }}"
