@@ -3,21 +3,21 @@ name: Update Android SDK
 on:
   push:
     branches:
-      - main
+      - main 
       - latest-sdk
-
   workflow_dispatch:
 
 jobs:
-  Update-Android-SDK:
-  
+  find_highest_branch_number:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - with:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
           fetch-depth: 0 
 
-      - name: Checkout Base Repository
+      - name: Initialize repository
         id: initialize_repository
         run: |
           git clone https://github.com/ovsky/adb-fastboot-installer.git      
